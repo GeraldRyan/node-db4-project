@@ -2,6 +2,7 @@ const express = require('express');
 const helmet = require('helmet');
 
 const db = require('./data/data-config.js');
+const recipiesRouter = require("./api/recipies-router")
 
 const server = express();
 
@@ -12,7 +13,9 @@ server.get('/', (req, res)=>{
   res.status(200).json("Ready for action")
 })
 
-server.get('/api/recipies', (req, res) => {
+server.use('/api/recipies/', recipiesRouter)
+
+server.get('/api/recipies/:id', (req, res) => {
   // get all recipies from the database
   db('recipies')
   .then(recipies => {
