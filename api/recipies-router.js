@@ -14,4 +14,15 @@ server.get('/', (req, res) => {
   });
 });
 
+server.get('/:id', (req, res) => {
+  // get all recipies from the database
+  schemes.findById(req.params.id)
+  .then(recipies => {
+    res.status(200).json(recipies);
+  })
+  .catch(error => {
+    res.status(500).json(error);
+  });
+});
+
 module.exports = server

@@ -15,16 +15,7 @@ server.get('/', (req, res)=>{
 
 server.use('/api/recipies/', recipiesRouter)
 
-server.get('/api/recipies/:id', (req, res) => {
-  // get all recipies from the database
-  db('recipies')
-  .then(recipies => {
-    res.status(200).json(recipies);
-  })
-  .catch(error => {
-    res.status(500).json(error);
-  });
-});
+
 
 server.get('/api/ingredients', (req, res) => {
   // get all animals from the database
