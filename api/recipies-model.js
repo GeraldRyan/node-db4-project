@@ -25,6 +25,8 @@ function GetShoppingList(recipe_id){
 
 function GetInstructions(recipe_id){
 // write logic
+return db('recipies').join('steps', "recipies.id",'=','steps.recipe_id').join('ingredients', 'steps.ingredient_id','=','ingredients.id').where("recipies.id","=", recipe_id).orderBy("steps.step_number")
+.select('steps.instructions')
 
 }
 
