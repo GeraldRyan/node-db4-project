@@ -4,7 +4,7 @@ exports.seed = async function(knex, Promise) {
   // Deletes ALL existing entries
 
 let dataToSeed = []
-for (let i=1;i<1;i++){
+for (let i=1;i<100;i++){
   dataToSeed.push({"id":i, name:`value ${i}`})
 }
 
@@ -20,14 +20,14 @@ for (let i=1;i<1;i++){
 
 // console.log(dataToSeed)
 
-  return knex('recipies').del()
+  return knex('recipies').truncate()
     .then(function () {
       // Inserts seed entries
-      return knex('recipies').insert(
-        dataToSeed
-        // {id: 1, name: 'rowValue1'}
-      
-      
-      );
+      return knex('recipies').insert([
+        // dataToSeed
+        {id: 1, name: 'Bowl of Cereal'},
+        {id: 2, name: 'Chicken Wild Rice'},
+        {id: 3, name: 'Glazed Salmon'}
+      ]);
     });
 };
