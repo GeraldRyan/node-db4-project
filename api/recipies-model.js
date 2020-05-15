@@ -17,7 +17,7 @@ function getRecipies()
 }
 
 function GetShoppingList(recipe_id){
-  return db('recipies').join('steps', "recipies.id",'=','steps.recipe_id').where("steps.id","=", recipe_id).orderBy("steps.step_number")
+  return db('recipies').join('steps', "recipies.id",'=','steps.recipe_id').join('ingredients', 'steps.ingredient_id','=','ingredients.id').where("recipies.id","=", recipe_id).orderBy("steps.step_number")
   // .select('schemes.scheme_name', "steps.step_number","steps.instructions")
 
 // write logic
